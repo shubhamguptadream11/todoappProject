@@ -58,6 +58,7 @@ const App = () => {
 
   const bgcolor = isEnabled ? dark.backgroundColor : light.backgroundColor;
 
+
   return (
     <SafeAreaView style={{...styles.screenMain, backgroundColor: bgcolor}}>
       <StatusBar barStyle={isEnabled ? 'dark-content' : 'light-content'} />

@@ -3,12 +3,27 @@ import {Text, View, StyleSheet} from 'react-native';
 import MainButton from './MainButton';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import {FunctionProvider} from './FunctionProvider';
+import { dark, light } from './theme';
 
-const TodoItem = ({item, action}) => {
+const TodoItem = ({item, action,isEnabled}) => {
   const {updateTask, deleteItems} = useContext(FunctionProvider);
+  const backgroundColor = isEnabled?dark.itemColor:light.itemColor;
+
+  const   listTextInComplete={
+    fontSize: 20,
+    flexWrap: 'wrap',
+    fontFamily: 'RobotoSlab-Regular',
+    color:isEnabled?dark.fontColor:light.fontColor,
+  }
+  const   listTextComplete = {
+    textDecorationLine: 'line-through',
+    fontSize: 20,
+    fontFamily: 'RobotoSlab-Regular',
+    color:isEnabled?dark.fontColor:light.fontColor,
+  }
 
   return (
-    <View style={styles.listTextContainer}>
+    <View style={{...styles.listTextContainer,backgroundColor:backgroundColor}}>
       <View style={styles.left}>
         <MainButton
           style={{marginHorizontal: 10}}
@@ -22,8 +37,8 @@ const TodoItem = ({item, action}) => {
           <Text
             style={
               action !== 'completed'
-                ? styles.listTextComplete
-                : styles.listTextInComplete
+                ? listTextComplete
+                : listTextInComplete
             }>
             {item.value}
           </Text>
@@ -42,7 +57,6 @@ const styles = StyleSheet.create({
   listTextContainer: {
     padding: 8,
     marginVertical: 10,
-    backgroundColor: 'white',
     borderRadius: 20,
     elevation: 4,
     flexDirection: 'row',
@@ -60,21 +74,12 @@ const styles = StyleSheet.create({
     flexWrap: 'nowrap',
     alignItems: 'center',
   },
-  listTextInComplete: {
-    fontSize: 20,
-    flexWrap: 'wrap',
-    fontFamily: 'RobotoSlab-Regular',
-  },
   textWrap: {
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
-  listTextComplete: {
-    textDecorationLine: 'line-through',
-    fontSize: 20,
-    fontFamily: 'RobotoSlab-Regular',
-  },
+
 });
 
 export default TodoItem;

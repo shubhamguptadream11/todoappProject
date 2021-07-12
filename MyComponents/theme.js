@@ -5,6 +5,7 @@ export const dark = {
     borderColor:'white',
     secondaryfont:'#989898',
     placeColor:'grey',
+    itemColor:'grey'
   }
 
  export const light = {
@@ -13,5 +14,6 @@ export const dark = {
     fontColor:'black',
     secondaryfont:'#989898',
     borderColor:'grey',
-    placeColor:'grey'
+    placeColor:'grey',
+    itemColor:'white'
   }

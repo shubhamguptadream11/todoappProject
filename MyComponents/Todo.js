@@ -5,6 +5,7 @@ import TodoItem from './TodoItem';
 const Todo = ({
   incompleteTask,
   completedTask,
+  isEnabled
 }) => {
   return (
     <View style={styles.listContainer}>
@@ -14,6 +15,7 @@ const Todo = ({
             action="completed"
             item={item}
             key={item.id}
+            isEnabled={isEnabled}
           />
         ))):null}
         {(completedTask.length!==0)?(completedTask.map(item => (
@@ -21,6 +23,7 @@ const Todo = ({
             action="incompleted"
             item={item}
             key={item.id}
+            isEnabled={isEnabled}
           />
         ))):null}
       </ScrollView>
