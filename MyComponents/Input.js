@@ -1,25 +1,18 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  TextInput,
-} from 'react-native';
+import {View, StyleSheet, TextInput} from 'react-native';
 import MainButton from './MainButton';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {light, dark} from './theme';
 
 const Input = ({isEnabled, task, settask, addTask}) => {
-
-  const  input =  {
+  const input = {
     borderBottomWidth: 2,
-    borderColor: 'black',
     width: '70%',
     fontSize: 20,
     fontFamily: 'RobotoSlab-Regular',
-    borderColor:isEnabled ? dark.borderColor : light.borderColor,
-    color:isEnabled ? dark.fontColor : light.fontColor,
-
-  }
+    borderColor: isEnabled ? dark.borderColor : light.borderColor,
+    color: isEnabled ? dark.fontColor : light.fontColor,
+  };
   return (
     <View style={styles.inputContainer}>
       <TextInput

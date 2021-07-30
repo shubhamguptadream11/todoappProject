@@ -1,17 +1,12 @@
 import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 
 import Header from './MyComponents/Header';
 import Horizontal from './MyComponents/Horizontal';
 import Input from './MyComponents/Input';
 import Todo from './MyComponents/Todo';
 import {light, dark} from './MyComponents/theme';
-import { FunctionProvider } from './MyComponents/FunctionProvider';
+import {FunctionProvider} from './MyComponents/FunctionProvider';
 
 const App = () => {
   //To store all completed task
@@ -40,24 +35,31 @@ const App = () => {
   //Function to update task whether is completed or not
   function updateTask(item, action) {
     if (action === 'completed') {
-      setincompleteTask(tasks => tasks.filter(task => task.id !== item.id));
+      setincompleteTask(tasks =>
+        tasks.filter(prevtask => prevtask.id !== item.id),
+      );
       setCompletedTask(() => [...completedTask, item]);
     } else if (action === 'incompleted') {
-      setCompletedTask(tasks => tasks.filter(task => task.id !== item.id));
-      setincompleteTask(incompleteTask => [...incompleteTask, item]);
+      setCompletedTask(tasks =>
+        tasks.filter(prevtask => prevtask.id !== item.id),
+      );
+      setincompleteTask(previncompleteTask => [...previncompleteTask, item]);
     }
   }
 
   //Function To delete task
   function deleteItems(item, action) {
     if (action === 'completed')
-      setincompleteTask(tasks => tasks.filter(task => task.id !== item.id));
+      setincompleteTask(tasks =>
+        tasks.filter(prevtask => prevtask.id !== item.id),
+      );
     else if (action === 'incompleted')
-      setCompletedTask(tasks => tasks.filter(task => task.id !== item.id));
+      setCompletedTask(tasks =>
+        tasks.filter(prevtask => prevtask.id !== item.id),
+      );
   }
 
   const bgcolor = isEnabled ? dark.backgroundColor : light.backgroundColor;
-
 
   return (
     <SafeAreaView style={{...styles.screenMain, backgroundColor: bgcolor}}>
@@ -81,15 +83,15 @@ const App = () => {
           />
         ) : null}
 
-        <FunctionProvider.Provider value={{updateTask:updateTask,deleteItems:deleteItems}}>
-        <Todo
-          isEnabled={isEnabled}
-          incompleteTask={incompleteTask}
-          completedTask={completedTask}
-        />
+        <FunctionProvider.Provider
+          value={{updateTask: updateTask, deleteItems: deleteItems}}>
+          <Todo
+            isEnabled={isEnabled}
+            incompleteTask={incompleteTask}
+            completedTask={completedTask}
+          />
         </FunctionProvider.Provider>
       </View>
-
     </SafeAreaView>
   );
 };

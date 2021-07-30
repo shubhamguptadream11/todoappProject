@@ -3,14 +3,13 @@ import {Text, View, StyleSheet} from 'react-native';
 import {dark, light} from './theme';
 
 const Horizontal = ({isEnabled, incomplete, complete}) => {
-
-  const text ={
+  const text = {
     width: 50,
     textAlign: 'center',
     fontWeight: 'bold',
-    color:isEnabled ? dark.fontColor : light.fontColor,
-  }
-  
+    color: isEnabled ? dark.fontColor : light.fontColor,
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.left} />
@@ -38,6 +37,5 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#989898',
   },
-  
 });
 export default Horizontal;

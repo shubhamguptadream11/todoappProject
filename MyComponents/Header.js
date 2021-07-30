@@ -3,7 +3,6 @@ import {Text, View, StyleSheet, Switch} from 'react-native';
 import {light, dark} from './theme';
 
 const Header = ({isEnabled, title, toggleSwitch}) => {
-
   //Either to write it in this way
   const titleContainer = {
     flexDirection: 'column',
@@ -12,15 +11,15 @@ const Header = ({isEnabled, title, toggleSwitch}) => {
     paddingVertical: 10,
     height: 100,
     borderBottomEndRadius: 90,
-    backgroundColor:isEnabled ? dark.header : light.header,
-  }
+    backgroundColor: isEnabled ? dark.header : light.header,
+  };
 
   const titleBox = {
     fontSize: 40,
     fontFamily: 'ZenTokyoZoo-Regular',
     fontWeight: '600',
-    color:isEnabled ? dark.fontColor : light.fontColor,
-  }
+    color: isEnabled ? dark.fontColor : light.fontColor,
+  };
 
   return (
     <View style={titleContainer}>
@@ -41,15 +40,14 @@ const Header = ({isEnabled, title, toggleSwitch}) => {
 };
 
 const styles = StyleSheet.create({
-
   titleBox: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  switch:{
-    flexDirection:'row',
-    justifyContent:'flex-end',
-    marginEnd:10
+  switch: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginEnd: 10,
   },
 });
 export default Header;

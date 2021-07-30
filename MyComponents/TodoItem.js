@@ -3,29 +3,31 @@ import {Text, View, StyleSheet} from 'react-native';
 import MainButton from './MainButton';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import {FunctionProvider} from './FunctionProvider';
-import { dark, light } from './theme';
+import {dark, light} from './theme';
 
-const TodoItem = ({item, action,isEnabled}) => {
+const TodoItem = ({item, action, isEnabled}) => {
   const {updateTask, deleteItems} = useContext(FunctionProvider);
-  const backgroundColor = isEnabled?dark.itemColor:light.itemColor;
+  const backgroundColor = isEnabled ? dark.itemColor : light.itemColor;
 
-  const   listTextInComplete={
+  const listTextInComplete = {
     fontSize: 20,
     flexWrap: 'wrap',
     fontFamily: 'RobotoSlab-Regular',
-    color:isEnabled?dark.fontColor:light.fontColor,
-  }
-  const   listTextComplete = {
+    color: isEnabled ? dark.fontColor : light.fontColor,
+  };
+  const listTextComplete = {
     textDecorationLine: 'line-through',
     fontSize: 20,
     fontFamily: 'RobotoSlab-Regular',
-    color:isEnabled?dark.fontColor:light.fontColor,
-  }
+    color: isEnabled ? dark.fontColor : light.fontColor,
+  };
 
   return (
-    <View style={{...styles.listTextContainer,backgroundColor:backgroundColor}}>
+    <View
+      style={{...styles.listTextContainer, backgroundColor: backgroundColor}}>
       <View style={styles.left}>
         <MainButton
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{marginHorizontal: 10}}
           onPress={updateTask.bind(this, item, action)}>
           <FontAwesome5Icon
@@ -36,9 +38,7 @@ const TodoItem = ({item, action,isEnabled}) => {
         <View style={styles.textWrap}>
           <Text
             style={
-              action !== 'completed'
-                ? listTextComplete
-                : listTextInComplete
+              action !== 'completed' ? listTextComplete : listTextInComplete
             }>
             {item.value}
           </Text>
@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
-
 });
 
 export default TodoItem;
